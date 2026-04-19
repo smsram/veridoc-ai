@@ -17,7 +17,11 @@ def generate_vision_forensic_report(image: Image.Image, deterministic_score: int
     if str(use_ai).lower() != "true":
         return {
             "overall_probability": deterministic_score,
-            "executive_summary": f"FAST TESTING MODE ACTIVE: The local algorithmic engines calculated a {deterministic_score}% probability of manipulation based on pixel variance and typographic geometry.",
+            "executive_summary": (
+                f"FAST TESTING MODE ACTIVE: The local forensic ensemble calculated a {deterministic_score}% "
+                "probability of manipulation from adaptive compression residuals, metadata fingerprints, and "
+                "typographic geometry checks."
+            ),
             "detailed_anomalies": deterministic_anomalies
         }
 
@@ -46,10 +50,10 @@ def generate_vision_forensic_report(image: Image.Image, deterministic_score: int
         Engine Forgery Probability: {deterministic_score}% ({risk_level})
         Detected Algorithmic Anomalies:
         {anomaly_descriptions}
-        
+
         Task: Write a highly professional, clinical executive summary (3 to 4 sentences) explaining the analysis. 
         Do not just list the anomalies. Instead, synthesize WHAT the anomalies mean in the context of the image provided. 
-        If the score is high, explain how the document was likely tampered with (e.g., digital text overlay, pixel splicing, layout shifts).
+        If the score is high, explain how the document was likely tampered with (e.g., digital text overlay, pixel splicing, layout shifts, compression residual mismatches).
         If the score is low, confirm its structural and cryptographic integrity.
         
         Respond strictly in {target_language}. Do not use Markdown formatting like bolding.
