@@ -1,0 +1,423 @@
+/* Custom variables for the Report Page */
+:root {
+  --color-error: #ffb4ab;
+  --color-error-glow: rgba(255, 180, 171, 0.2);
+  --color-warning: #ff6c66;
+  --color-warning-glow: rgba(255, 108, 102, 0.2);
+}
+
+.report-container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 32px 24px 64px 24px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* --- HEADER --- */
+.report-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .report-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.breadcrumb .active {
+  color: var(--text-main);
+}
+
+.report-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--bg-card-border);
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-card-border);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.btn-text:hover {
+  background-color: rgba(14, 165, 233, 0.1);
+}
+
+/* --- GRID LAYOUT --- */
+.report-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .report-grid {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+/* --- LEFT COLUMN: VISUAL ANALYSIS --- */
+.visual-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.visual-toolbar {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--bg-card-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.02);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.visual-toolbar h2 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+/* --- TOGGLE BUTTONS (FIXED PADDING) --- */
+.toggle-container {
+  display: flex;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  border-radius: 12px;
+  align-items: center;
+}
+
+.view-toggle-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.view-toggle-btn:hover {
+  color: #fff;
+}
+
+.view-toggle-btn.active {
+  background-color: #3e4850;
+  color: #fff;
+}
+
+.view-toggle-btn.recovery-btn {
+  border: 1px solid #10b981;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.view-toggle-btn.recovery-btn .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.view-toggle-btn.recovery-btn.active {
+  background-color: #10b981;
+  color: #fff;
+}
+
+/* --- DOCUMENT VIEWER & OVERLAYS --- */
+.document-viewer {
+  background-color: #e5e5e5;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  position: relative; /* Crucial for absolute positioning of download button */
+}
+
+.viewer-download-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: rgba(9, 9, 11, 0.7);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.viewer-download-btn:hover {
+  background-color: var(--primary);
+  transform: scale(1.05);
+}
+
+.document-viewer iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  min-height: 600px;
+}
+
+.doc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-height: 700px;
+}
+
+/* Smooth Fade Animation for switching tabs */
+.fade-in-fast {
+  animation: fadeInFast 0.4s ease-out;
+}
+
+@keyframes fadeInFast {
+  from { opacity: 0; transform: scale(0.99); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --- RIGHT COLUMN: EXPLAINABILITY PANEL --- */
+.explain-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.alert-card {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(255, 180, 171, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 16px;
+}
+
+.alert-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background-color: var(--color-error);
+  filter: blur(50px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.alert-icon {
+  background-color: var(--color-error-glow);
+  color: var(--color-error);
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material-symbols-outlined {
+  flex-shrink: 0;
+}
+
+.alert-content h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.alert-content p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* Anomalies List */
+.anomalies-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.anomaly-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--bg-card-border);
+  margin-bottom: 24px;
+}
+
+.anomaly-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.dot.critical {
+  background-color: var(--color-error);
+  box-shadow: 0 0 10px var(--color-error);
+}
+
+.dot.warning {
+  background-color: var(--color-warning);
+  box-shadow: 0 0 10px var(--color-warning);
+}
+
+.anomaly-content h4 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  transition: color 0.2s;
+}
+
+.anomaly-content p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tag {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--bg-card-border);
+  color: var(--text-muted);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Metadata */
+.metadata-card {
+  background-color: #0e0e10;
+  border: 1px solid var(--bg-card-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.metadata-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.metadata-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  font-size: 0.875rem;
+}
+
+.meta-label { color: var(--text-muted); font-weight: 700; }
+.meta-value { text-align: right; color: var(--text-main); font-weight: 500; }
+
+/* Print Styles (Removes buttons and dark mode when Exporting to PDF via browser) */
+@media print {
+  .header-actions, .visual-toolbar, .viewer-download-btn, .breadcrumb {
+    display: none !important;
+  }
+  .report-container {
+    padding: 0;
+    max-width: 100%;
+  }
+  .visual-card, .explain-panel, .alert-card, .anomalies-card, .metadata-card {
+    border: 1px solid #ccc;
+    background-color: white !important;
+    color: black !important;
+  }
+  .alert-content h2, .anomaly-content h4, .meta-value { color: black !important; }
+  .alert-glow { display: none; }
+}

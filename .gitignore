@@ -1,0 +1,16 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Backend
+veridoc-backend/venv/
+veridoc-backend/.venv/
+veridoc-backend/env/
+veridoc-backend/__pycache__/
+veridoc-backend/*.pyc
+veridoc-backend/.env
+
+# General
+.DS_Store
+.vscode/

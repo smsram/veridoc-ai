@@ -1,0 +1,129 @@
+.dashboard-wrapper {
+  /* Use min-height instead of height so it can grow and scroll */
+  min-height: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  position: relative;
+}
+
+.ambient-light {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-color: rgba(14, 165, 233, 0.15);
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  animation: pulseGlow 4s infinite alternate ease-in-out;
+}
+
+.hero-section {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 50px;
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to bottom, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* The Big Call To Action Button */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 20px 40px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.3);
+}
+
+.btn-hero:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -5px rgba(14, 165, 233, 0.4);
+}
+
+.stats-container {
+  display: flex;
+  gap: 40px;
+  margin-top: 16px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.stat-item .icon {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 3.25rem; }
+  .stats-container { flex-direction: column; gap: 16px; align-items: center; }
+  .ambient-light { width: 300px; height: 300px; }
+}
+
+.btn-hero {
+  display: inline-flex; /* This is what puts the icon and text side-by-side */
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* This creates the space between the radar icon and the words */
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 20px 40px; /* This gives the button its large "plump" size */
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}

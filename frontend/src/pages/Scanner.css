@@ -1,0 +1,308 @@
+.scanner-container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.scanner-header {
+  margin-bottom: 40px;
+}
+
+.scanner-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.scanner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  background-color: var(--bg-card);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid var(--bg-card-border);
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .scanner-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Left Column: Upload Section --- */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.custom-select {
+  background-color: #0e0e10;
+  border: 1px solid var(--bg-card-border);
+  color: var(--text-main);
+  padding: 14px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  appearance: none;
+  cursor: pointer;
+}
+
+.dropzone {
+  flex-grow: 1;
+  min-height: 320px;
+  border: 2px dashed var(--bg-card-border);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.dropzone:hover {
+  border-color: var(--primary);
+  background-color: rgba(14, 165, 233, 0.05);
+}
+
+.upload-icon-circle {
+  width: 64px;
+  height: 64px;
+  background-color: var(--bg-card-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+}
+
+.dropzone:hover .upload-icon-circle {
+  color: var(--primary);
+  background-color: rgba(14, 165, 233, 0.1);
+}
+
+/* --- Right Column: Progress Tracker --- */
+.tracker-section {
+  background-color: #131315;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid var(--bg-card-border);
+}
+
+.tracker-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-line {
+  position: absolute;
+  left: 15px; /* Aligns to center of 32px circle */
+  top: 16px; /* Starts exactly at center of first circle */
+  bottom: 16px; /* Ends exactly at center of last circle */
+  width: 2px;
+  background-color: var(--bg-card-border);
+  z-index: 1;
+}
+
+.timeline-line-active {
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  width: 2px;
+  background-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+  z-index: 2;
+  /* THE FIX: Prevents the 100% React height from spilling out of the container */
+  max-height: calc(100% - 32px); 
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 2px solid var(--bg-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step.active .step-circle {
+  border-color: var(--primary);
+  animation: pulse-glow 2s infinite alternate;
+}
+
+.step.active .step-icon {
+  color: var(--primary);
+}
+
+.step.pending {
+  opacity: 0.5;
+}
+
+.step-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.step-content p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --- BROWSE / START BUTTON STYLING --- */
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff; 
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* The background color is handled dynamically in JSX (gray when empty, blue when file is loaded) */
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  /* Adds a soft glow matching your primary blue color */
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.25); 
+  filter: brightness(1.1);
+}
+
+.nav-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- AI TOGGLE SWITCH --- */
+.toggle-group {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--bg-card-border);
+  padding: 16px;
+  border-radius: 12px;
+  transition: opacity 0.3s;
+}
+
+.toggle-group.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.toggle-switch {
+  width: 44px;
+  height: 24px;
+  background-color: var(--bg-card-border);
+  border-radius: 12px;
+  position: relative;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-switch.on {
+  background-color: var(--primary);
+}
+
+.toggle-knob {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-switch.on .toggle-knob {
+  transform: translateX(20px);
+}
+
+/* --- THE PERFECT TIMELINE LINE (FIXED) --- */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 16px; /* Exactly half of the 32px circle */
+  top: 16px; /* Starts exactly at the center of the first circle */
+  bottom: 16px; /* Ends exactly at the center of the last circle */
+  width: 2px;
+  background-color: var(--bg-card-border);
+  z-index: 1;
+  transform: translateX(-50%); /* Shifts the 2px line left by 1px so it is perfectly dead center */
+}
+
+.timeline-line-active {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: 2px;
+  background-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+  z-index: 2;
+  transform: translateX(-50%);
+  /* Removes max-height because our JS percentage math (50%, 100%) handles the stop points perfectly now */
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 3; /* Puts the circles ON TOP of the line */
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 2px solid var(--bg-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevents the circle from squishing */
+}

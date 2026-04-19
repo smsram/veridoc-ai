@@ -1,0 +1,85 @@
+/* Import Fonts and Icons */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Manrope:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0');
+
+/* CSS Variables for our Theme (Accessible in all CSS files) */
+:root {
+  --bg-dark: #09090b;
+  --bg-card: #18181b;
+  --bg-card-border: #27272a;
+  --text-main: #fafafa;
+  --text-muted: #a1a1aa;
+  --primary: #0ea5e9;
+  --primary-hover: #0284c7;
+  
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  
+  /* Lock the viewport */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; 
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Global Fix for Google Icons Alignment */
+.material-symbols-outlined {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Global Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+/* Add these to your existing src/index.css */
+.ghost-border { 
+  border: 1px solid rgba(62, 72, 80, 0.3); 
+}
+
+.bg-surface-container {
+  background-color: var(--bg-card);
+}
+
+.bg-surface-low {
+  background-color: #131315;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 5px rgba(14, 165, 233, 0.2); }
+  100% { box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); }
+}
